@@ -5,7 +5,11 @@ import 'package:flutter_textmsg_fb_app/components/my_textfield.dart';
 class LoginPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  LoginPage({super.key});
+
+  //for tap the Register Now Text
+  final void Function()? onTap;
+
+  LoginPage({super.key, this.onTap});
 
   // login method for login button
   void logIn() {}
@@ -65,11 +69,14 @@ class LoginPage extends StatelessWidget {
                   'Not registerd user? please -->',
                   style: TextStyle(color: Colors.red),
                 ),
-                Text(
-                  'Register Now',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary,
+                GestureDetector(
+                  onTap: onTap,
+                  child: Text(
+                    'Register Now',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                   ),
                 ),
               ],

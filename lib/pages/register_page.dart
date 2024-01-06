@@ -7,7 +7,8 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
-  RegisterPage({super.key});
+  final void Function()? onTap;
+  RegisterPage({super.key, this.onTap});
 
   //Register Method for user can register their ac
   void register() {}
@@ -74,11 +75,14 @@ class RegisterPage extends StatelessWidget {
                   'Already Registerd? please -->',
                   style: TextStyle(color: Colors.red),
                 ),
-                Text(
-                  'LogIn Now',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary,
+                GestureDetector(
+                  onTap: onTap,
+                  child: Text(
+                    'LogIn Now',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                   ),
                 ),
               ],

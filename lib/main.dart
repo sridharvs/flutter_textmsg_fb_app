@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_textmsg_fb_app/auth/login_or_register_page.dart';
 import 'package:flutter_textmsg_fb_app/pages/login_page.dart';
 import 'package:flutter_textmsg_fb_app/pages/register_page.dart';
 import 'package:flutter_textmsg_fb_app/themes/light_mode.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: lightMode,
-      home: RegisterPage(),
+      home: LoginOrRegister(),
     );
   }
 }
