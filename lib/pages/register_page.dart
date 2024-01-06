@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_textmsg_fb_app/components/my_button.dart';
 import 'package:flutter_textmsg_fb_app/components/my_textfield.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  LoginPage({super.key});
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+  RegisterPage({super.key});
 
-  // login method for login button
-  void logIn() {}
+  //Register Method for user can register their ac
+  void register() {}
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 20),
             //welcome message.........
             Text(
-              'Welcome to Message Chatting App, let"s chat',
+              'You can create an account for You',
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(context).colorScheme.primary,
@@ -49,10 +51,17 @@ class LoginPage extends StatelessWidget {
               controller: _passwordController,
             ),
             const SizedBox(height: 20),
+            //Forget password textfield..........
+            MyTextField(
+              hintText: 'Confirm Password',
+              obscureText: true,
+              controller: _confirmPasswordController,
+            ),
+            const SizedBox(height: 20),
             //login button............
             MyButton(
-              text: ('LogIn'),
-              onTap: logIn,
+              text: ('Register'),
+              onTap: register,
             ),
             const SizedBox(
               height: 20,
@@ -62,11 +71,11 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Not registerd user? please -->',
+                  'Already Registerd? please -->',
                   style: TextStyle(color: Colors.red),
                 ),
                 Text(
-                  'Register Now',
+                  'LogIn Now',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.primary,
