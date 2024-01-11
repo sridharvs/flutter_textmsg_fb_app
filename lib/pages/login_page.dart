@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_textmsg_fb_app/auth/auth_service.dart';
 import 'package:flutter_textmsg_fb_app/components/my_button.dart';
 import 'package:flutter_textmsg_fb_app/components/my_textfield.dart';
 
@@ -12,7 +13,35 @@ class LoginPage extends StatelessWidget {
   LoginPage({super.key, this.onTap});
 
   // login method for login button
-  void logIn() {}
+  void logIn(BuildContext context) {
+    //get auth service
+    final _authService = AuthService();
+    //try to login
+    if (_passwordController.text == _passwordController.text) {
+      try {
+        _authService.signInWithemailAndPassword(
+            _emailController.text, _passwordController.text);
+      }
+      //catch the errors
+      catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => (AlertDialog(
+            title: Text(e.toString()),
+          )),
+        );
+      }
+    }
+    //Password Not match, show the error
+    else {
+      showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+          title: Text("Password Not Match"),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +85,7 @@ class LoginPage extends StatelessWidget {
             //login button............
             MyButton(
               text: ('LogIn'),
-              onTap: logIn,
+              onTap: () => logIn(context),
             ),
             const SizedBox(
               height: 20,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_textmsg_fb_app/auth/auth_gate.dart';
 import 'package:flutter_textmsg_fb_app/auth/login_or_register_page.dart';
 import 'package:flutter_textmsg_fb_app/firebase_options.dart';
 import 'package:flutter_textmsg_fb_app/pages/login_page.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: lightMode,
-      home: LoginOrRegister(),
+      home: AuthGate(),
     );
   }
 }

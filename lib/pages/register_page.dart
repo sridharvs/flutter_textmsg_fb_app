@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_textmsg_fb_app/auth/auth_service.dart';
 import 'package:flutter_textmsg_fb_app/components/my_button.dart';
 import 'package:flutter_textmsg_fb_app/components/my_textfield.dart';
 
@@ -11,7 +12,33 @@ class RegisterPage extends StatelessWidget {
   RegisterPage({super.key, this.onTap});
 
   //Register Method for user can register their ac
-  void register() {}
+  void register(BuildContext context) {
+    //get auth service
+    final _auth = AuthService();
+    //If password match create the User
+    if (_passwordController.text == _confirmPasswordController.text) {
+      try {
+        _auth.signUpWithEmailAndPassword(
+            _emailController.text, _passwordController.text);
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+          ),
+        );
+      }
+    }
+    //Password Not match, show the error
+    else {
+      showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+          title: Text("Password Not Match"),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +86,10 @@ class RegisterPage extends StatelessWidget {
               controller: _confirmPasswordController,
             ),
             const SizedBox(height: 20),
-            //login button............
+            // login/Register button............
             MyButton(
               text: ('Register'),
-              onTap: register,
+              onTap: () => register(context),
             ),
             const SizedBox(
               height: 20,
