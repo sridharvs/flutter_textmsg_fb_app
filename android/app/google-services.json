@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "78016706706",
+    "project_id": "chat-fb-app-58655",
+    "storage_bucket": "chat-fb-app-58655.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78016706706:android:c42c6f73205da76d074e4b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_textmsg_fb_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCA33zHwtdVBATTECWyODytLbcEoMDkcBw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
