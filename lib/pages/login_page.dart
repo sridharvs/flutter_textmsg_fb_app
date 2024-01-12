@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_textmsg_fb_app/auth/auth_service.dart';
+import 'package:flutter_textmsg_fb_app/services/auth/auth_service.dart';
 import 'package:flutter_textmsg_fb_app/components/my_button.dart';
 import 'package:flutter_textmsg_fb_app/components/my_textfield.dart';
 
@@ -15,11 +15,11 @@ class LoginPage extends StatelessWidget {
   // login method for login button
   void logIn(BuildContext context) {
     //get auth service
-    final _authService = AuthService();
+    final authService = AuthService();
     //try to login
     if (_passwordController.text == _passwordController.text) {
       try {
-        _authService.signInWithemailAndPassword(
+        authService.signInWithemailAndPassword(
             _emailController.text, _passwordController.text);
       }
       //catch the errors

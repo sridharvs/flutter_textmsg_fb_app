@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_textmsg_fb_app/auth/auth_service.dart';
+import 'package:flutter_textmsg_fb_app/services/auth/auth_service.dart';
 import 'package:flutter_textmsg_fb_app/components/my_button.dart';
 import 'package:flutter_textmsg_fb_app/components/my_textfield.dart';
 
@@ -14,11 +14,11 @@ class RegisterPage extends StatelessWidget {
   //Register Method for user can register their ac
   void register(BuildContext context) {
     //get auth service
-    final _auth = AuthService();
+    final auth = AuthService();
     //If password match create the User
     if (_passwordController.text == _confirmPasswordController.text) {
       try {
-        _auth.signUpWithEmailAndPassword(
+        auth.signUpWithEmailAndPassword(
             _emailController.text, _passwordController.text);
       } catch (e) {
         showDialog(
