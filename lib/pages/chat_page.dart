@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_textmsg_fb_app/components/chat_bubble.dart';
 import 'package:flutter_textmsg_fb_app/components/my_textfield.dart';
 import 'package:flutter_textmsg_fb_app/services/auth/auth_service.dart';
 import 'package:flutter_textmsg_fb_app/services/chat/chat_service.dart';
@@ -31,6 +32,9 @@ class ChatPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(receiverEmail),
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.grey,
+        elevation: 0,
       ),
       body: Column(
         children: [
@@ -53,11 +57,11 @@ class ChatPage extends StatelessWidget {
       builder: (context, snapshot) {
         //errors
         if (snapshot.hasError) {
-          return Text("Error");
+          return const Text("Error");
         }
         // loading
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading..");
+          return const Text("Loading..");
         }
         //return list view
         return ListView(
@@ -80,32 +84,51 @@ class ChatPage extends StatelessWidget {
 
     return Container(
       alignment: alignment,
-      child: Text(
-        data["message"],
+      child: Column(
+        crossAxisAlignment:
+            isCurrentUser ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        children: [
+          ChatBubble(messaege: data["message"], isCurrentUser: isCurrentUser)
+        ],
       ),
     );
   }
 
   //build message input
   Widget _buildUserInput() {
-    return Row(
-      children: [
-        //textfield should take up most of the
-        Expanded(
-          child: MyTextField(
-            hintText: "Type message here",
-            obscureText: false,
-            controller: _messageController,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20),
+      child: Row(
+        children: [
+          //textfield should take up most of the
+          Expanded(
+            child: MyTextField(
+              hintText: "Type message here",
+              obscureText: false,
+              controller: _messageController,
+            ),
           ),
-        ),
-        //send button
-        IconButton(
-          onPressed: sendMessage,
-          icon: Icon(
-            Icons.send,
+          //send button
+          Container(
+            decoration: const BoxDecoration(
+              color: Colors.amber,
+              shape: BoxShape.circle,
+            ),
+            margin: const EdgeInsets.only(right: 10),
+            child: Padding(
+              padding: const EdgeInsets.all(4),
+              child: IconButton(
+                onPressed: sendMessage,
+                icon: const Icon(
+                  Icons.send,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              ),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
